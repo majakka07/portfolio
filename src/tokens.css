@@ -1,0 +1,56 @@
+/* Sara Fricker — shared UI foundation. Confirm actual local font-family name and legal font asset usage. */
+:root {
+  --font-display: "Kultüre", sans-serif;
+  --font-body: "Oscine", sans-serif;
+  --color-brand-blue-500: #88c1f2;
+  --color-brand-blue-700: #3b86c7;
+  --color-brand-blue-200: #cde7fc;
+  --color-navy-950: #030a18;
+  --color-graphite-800: #494b4f;
+  --color-graphite-700: #5c5e62;
+  --color-paper-50: #f8f9fa;
+  --color-white: #fff;
+  --color-muted-dark: #d4d9de;
+  --color-ink-light: #18222b;
+  --color-muted-light: #48545f;
+  --color-pink-300: #f3a6cf;
+  --color-moss-500: #7c9960;
+  --color-stone-400: #aeb7be;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-6: 24px; --space-8: 32px; --space-12: 48px;
+  --space-16: 64px; --space-24: 96px; --space-32: 128px;
+  --radius-sm: 8px; --radius-md: 16px; --radius-lg: 24px; --radius-pill: 999px;
+  --layout-max: 1320px; --layout-padding: 64px;
+  --motion-fast: 160ms; --motion-base: 320ms; --motion-slow: 650ms;
+  --ease-standard: cubic-bezier(.22, 1, .36, 1);
+  --ease-soft: cubic-bezier(.33, 0, .2, 1);
+  --color-canvas: var(--color-graphite-800);
+  --color-text: var(--color-white);
+  --color-text-muted: var(--color-muted-dark);
+  --color-link: var(--color-brand-blue-500);
+}
+[data-theme="immersive"] { --color-canvas: var(--color-navy-950); }
+[data-theme="light"] {
+  --color-canvas: var(--color-paper-50);
+  --color-text: var(--color-ink-light);
+  --color-text-muted: var(--color-muted-light);
+  --color-link: var(--color-brand-blue-700);
+}
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--color-canvas); color: var(--color-text); font-family: var(--font-body); font-size: 16px; line-height: 1.625; }
+*, *::before, *::after { box-sizing: border-box; }
+img, video { max-width: 100%; }
+.container { width: min(calc(100% - 2 * var(--layout-padding)), var(--layout-max)); margin-inline: auto; }
+.type-display-hero { font-family: var(--font-display); font-size: clamp(48px, 7.2vw, 104px); line-height: .96; letter-spacing: -.035em; font-weight: 400; }
+.type-display-project { font-family: var(--font-display); font-size: clamp(44px, 5.6vw, 80px); line-height: 1.05; letter-spacing: -.025em; font-weight: 400; }
+.type-heading-h2 { font-family: var(--font-display); font-size: clamp(30px, 3.5vw, 42px); line-height: 1.14; letter-spacing: -.02em; font-weight: 400; }
+.type-body { font: 400 16px/1.625 var(--font-body); max-width: 68ch; }
+a { color: var(--color-link); }
+:focus-visible { outline: 3px solid var(--color-brand-blue-500); outline-offset: 4px; }
+[data-theme="light"] :focus-visible { outline-color: var(--color-ink-light); }
+@media(max-width: 1023px) { :root { --layout-padding: 32px; } }
+@media(max-width: 599px) { :root { --layout-padding: 20px; } }
+@media(prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
