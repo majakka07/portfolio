@@ -53,3 +53,7 @@ Use **`npm run dev`** for local development. The navigation is inserted into eac
 - `playground.html`: clearly marked starting page for future experiments.
 
 The navigation is sticky to keep the project return available on long case studies. Anchor offsets keep target content below it. Main links stay visible on mobile, avoiding an additional nested menu. The project directory is a disclosure rather than a modal: it does not trap focus, and Escape restores focus to its trigger. No new motion or animation dependencies were added. The TypeSpace preview status remains explicit.
+
+### Homepage navigation dock
+
+The homepage uses a distinct navbar variant with **Work / About me / Contact / Playground**. Edit link labels and destinations in `siteNavigation()` in `src/site-layout.js`. `styles/navigation.css` contains the `HOMEPAGE NAVIGATION DOCK` styles; `src/navigation.js` handles the decorative highlight, keyboard focus, responsive measurements, and Work/Contact section state. The hover/focus movement uses the existing motion tokens and stops for reduced-motion preferences. All four links remain visible on mobile and usable without JavaScript. Project-page navigation retains its existing layout.

@@ -104,3 +104,90 @@ body { isolation: isolate; }
 .navigation-icon { width: 20px; height: 20px; display: inline-block; flex-shrink: 0; vertical-align: middle; }
 .explore-card-title .navigation-icon { width: 28px; height: 28px; }
 @media (min-width: 768px) { .site-header .site-contact { display: inline-flex; } }
+
+/* HOMEPAGE NAVIGATION DOCK
+   Four visible destinations, with the same feedback for mouse and keyboard.
+   The moving highlight is decorative: the links work without JavaScript. */
+.site-header--home .site-bar {
+  padding-block: var(--space-4);
+  gap: var(--space-4);
+}
+.site-header--home .site-brand > span { display: block; }
+.site-header--home .site-primary {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  margin: 0;
+  gap: 0;
+  padding: var(--space-1);
+  border: 1px solid var(--color-graphite-700);
+  border-radius: var(--radius-pill);
+  isolation: isolate;
+}
+.home-nav-highlight {
+  position: absolute;
+  inset: 4px auto auto 0;
+  height: calc(100% - 8px);
+  width: 0;
+  background: var(--color-brand-blue-500);
+  border-radius: var(--radius-pill);
+  pointer-events: none;
+  z-index: -1;
+}
+/* Activate transitions only after the first measurement to avoid an entrance sweep. */
+.home-nav-dock.is-ready .home-nav-highlight {
+  transition: transform var(--motion-base) var(--ease-standard), width var(--motion-base) var(--ease-standard);
+}
+.site-header--home .site-primary a {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+  min-height: 48px;
+  padding: var(--space-2);
+  border: 0;
+  color: var(--color-white);
+  white-space: nowrap;
+  transition: color var(--motion-fast) var(--ease-standard);
+}
+.site-header--home .site-primary a[aria-current] { background: var(--color-brand-blue-500); color: var(--color-navy-950); }
+/* JavaScript tracks the highlight; CSS provides the static active state as a fallback. */
+.home-nav-dock.is-ready a[aria-current] { background: transparent; }
+.site-header--home .home-nav-dock.is-ready a.is-highlighted { color: var(--color-navy-950); }
+.home-link-number { display: none; font-size: 12px; }
+.home-link-arrow { display: none; }
+.home-link-label { display: inline-block; transition: transform var(--motion-fast) var(--ease-standard); }
+.site-header--home .site-primary a:hover .home-link-label,
+.site-header--home .site-primary a:focus-visible .home-link-label { transform: translateY(-2px); }
+.site-header--home .site-primary a:focus-visible { outline-offset: 2px; }
+.site-header--home .site-context > .site-location { display: none; }
+.site-header--home .site-context { min-height: 48px; }
+
+@media (min-width: 768px) {
+  .site-header--home .site-bar { flex-wrap: nowrap; }
+  .site-header--home .site-primary { width: auto; }
+  .site-header--home .site-primary a { padding-inline: var(--space-4); }
+  .site-header--home .site-context > .site-location { display: block; }
+}
+@media (min-width: 1024px) {
+  .home-link-number { display: inline; opacity: .75; }
+  .home-link-arrow { display: inline-flex; opacity: 0; transform: translate(-4px, 4px); transition: opacity var(--motion-fast) var(--ease-standard), transform var(--motion-fast) var(--ease-standard); }
+  .site-header--home .site-primary a:hover .home-link-arrow,
+  .site-header--home .site-primary a:focus-visible .home-link-arrow { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-nav-dock.is-ready .home-nav-highlight,
+  .home-link-label,
+  .home-link-arrow,
+  .site-header--home .site-primary a { transition: none; }
+  .site-header--home .site-primary a:hover .home-link-label,
+  .site-header--home .site-primary a:focus-visible .home-link-label { transform: none; }
+}
+/* Keep the previous active label readable while the highlight visits another link. */
+.home-nav-dock.is-ready a[aria-current] { color: var(--color-white); }
+@media (max-width: 767px) {
+  html:has(.site-header--home) { --navigation-height: 200px; }
+}

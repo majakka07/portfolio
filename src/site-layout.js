@@ -26,25 +26,35 @@ export function siteNavigation(page) {
   const project = projects.find(item => item.slug === page);
   const active = project || page === 'index' ? 'work' : page;
   // PRIMARY LINKS: edit these entries to change the top-level destinations.
-  const mainLinks = [
+  const isHome = page === 'index';
+  const linkItems = [
     ['work', 'index.html#portfolio', 'Work'],
-    ['about', 'about.html', 'About'],
+    ['about', 'about.html', isHome ? 'About me' : 'About'],
+    ...(isHome ? [['contact', '#kontakt', 'Contact']] : []),
     ['playground', 'playground.html', 'Playground'],
-  ].map(([key, href, label]) => `<a href="${href}"${key === active ? ' aria-current="' + (project ? 'true' : 'page') + '"' : ''}>${label}</a>`).join('\n');
+  ];
+  // Homepage links use a moving highlight; the labels remain real, accessible anchors.
+  const mainLinks = linkItems.map(([key, href, label], index) => {
+    const current = key === active ? ` aria-current="${isHome ? 'location' : project ? 'true' : 'page'}"` : '';
+    const content = isHome
+      ? `<span class="home-link-number" aria-hidden="true">0${index + 1}</span><span class="home-link-label">${label}</span><span class="home-link-arrow" aria-hidden="true">↗</span>`
+      : label;
+    return `<a href="${href}" data-nav-key="${key}"${current}>${content}</a>`;
+  }).join('\n');
 
   // The first row holds the brand and main links. The second provides context,
   // a return to the work index, and the thumbnail project directory.
   // The skip-link target differs on the older SchatzkisteVR page; keep its existing ID.
   return withIcons(`
     <a class="site-skip" href="#${page === 'schatzkistevr' ? 'projektinhalt' : 'main'}">Skip to content</a>
-    <header class="site-header">
+    <header class="site-header${isHome ? ' site-header--home' : ''}">
       <div class="site-bar">
         <a class="site-brand" href="index.html" aria-label="Sara Fricker — Home">
           <img src="assets/logo.svg" alt="" width="44" height="44">
           <span>Sara Fricker<small>Design & Development</small></span>
         </a>
-        <nav class="site-primary" aria-label="Main navigation">${mainLinks}</nav>
-        <a class="site-contact" href="#kontakt">Let’s talk <span aria-hidden="true">↗</span></a>
+        <nav class="site-primary${isHome ? ' home-nav-dock' : ''}" aria-label="Main navigation">${isHome ? '<span class="home-nav-highlight" aria-hidden="true"></span>' : ''}${mainLinks}</nav>
+        ${isHome ? '' : '<a class="site-contact" href="#kontakt">Let’s talk <span aria-hidden="true">↗</span></a>'}
       </div>
       <div class="site-context">
         ${project ? `<a class="site-back" href="index.html#portfolio"><span aria-hidden="true">↖</span> All projects</a><span class="site-location"><span>${String(projects.indexOf(project) + 1).padStart(2, '0')} / 03</span> ${project.title}</span>` : `<span class="site-location">${page === 'index' ? 'Independent designer · St. Gallen, CH' : page === 'about' ? 'A little more about me' : 'Room for curiosity'}</span>`}
