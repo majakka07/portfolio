@@ -11,16 +11,37 @@
     <link rel="stylesheet" href="src/tokens.css">
 <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles/navigation.css">
+<link rel="stylesheet" href="styles/hero.css">
 </head>
-<body>
+<body class="homepage">
     <!-- Shared markup is rendered by the Vite site-layout plugin. -->
     <!-- Shared navbar: edit src/site-layout.js, not this insertion marker. -->
     <!-- SITE_NAV -->
-<!-- HERO: replace assets/hero.webp for the background; edit the name and tagline below. -->
-<header class="hero" id="home">
-
-<div class="hero-title"><p>Digital Design, UI/UX & Frontend Development</p><h1>Sara<br>Fricker</h1></div>
-<div class="hero-bottom"><span>© 2026</span><a href="mailto:sarafricker@gmail.com">sarafricker@gmail.com</a></div>
+<!-- OCEAN HERO: editable copy in HTML; model and environment live in src/hero/. -->
+<header class="ocean-hero" id="home" aria-label="Sara Fricker — interactive ocean scene">
+  <div class="ocean-stage">
+    <!-- Original SVG remains as a fallback while WebGL loads or is unavailable. -->
+    <div class="ocean-fallback" aria-hidden="true"><img src="assets/logo.svg" alt="" width="355" height="435"></div>
+    <div class="ocean-copy">
+      <p class="ocean-eyebrow">Independent mind. Human-centred design.</p>
+      <h1>Sara<br>Fricker</h1>
+      <p>Digital Design, UI/UX<br>& Frontend Development</p>
+    </div>
+    <!-- These layers appear as the camera crosses the waterline. -->
+    <div class="ocean-underwater" aria-hidden="true"></div>
+    <div class="ocean-waterline" aria-hidden="true"></div>
+    <div class="ocean-deep-copy"><h2>A little deeper.<br>A different perspective.</h2><p>Digital experiences, with people at their heart.</p></div>
+    <div class="ocean-bottom">
+      <a class="ocean-scroll" href="#main"><svg viewBox="0 0 32 40" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 3v30M6 23l10 10 10-10"/></svg>Scroll to dive in</a>
+      <div class="ocean-interaction">
+        <p class="ocean-status">A little curiosity. A different perspective.</p>
+        <div class="ocean-controls">
+          <button type="button" data-bloom-toggle aria-pressed="false" hidden>Bloom the logo</button>
+          <button type="button" data-motion-toggle aria-pressed="false" hidden>Pause motion</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
 <!-- MAIN CONTENT: this ID is the destination of the keyboard skip link. -->
 <main id="main">
@@ -57,4 +78,5 @@
 
     <!-- Optional menu enhancements: Escape, outside-click, and focus handling. -->
     <script type="module" src="src/navigation.js"></script>
+<script type="module" src="src/hero/hero.js"></script>
 </body></html>
