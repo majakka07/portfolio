@@ -1,0 +1,128 @@
+/* Shared layout for project case studies. Homepage styles stay in styles.css. */
+.project-page {
+  --case-width: 860px;
+  --case-space: clamp(80px, 10vw, 160px);
+  line-height: 1.8;
+}
+
+.case-width {
+  width: min(var(--case-width), 84%);
+  margin-inline: auto;
+}
+
+/* Hero and project navigation */
+.case-hero {
+  position: relative;
+  min-height: 480px;
+  height: 82svh;
+  max-height: 900px;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  background: #b4afa6;
+}
+
+.case-hero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.case-hero h1 {
+  font-size: clamp(46px, 7.5vw, 115px);
+  letter-spacing: -0.04em;
+  text-align: center;
+  text-shadow: 0 2px 25px #3e424630;
+}
+
+.case-navigation {
+  position: absolute;
+  inset: 35px 10% auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.case-logo { width: 42px; height: 42px; }
+.case-navigation__actions { display: flex; gap: 32px; }
+.case-navigation__actions a { font-size: 12px; text-align: center; }
+.case-navigation__actions span { display: block; font-size: 24px; line-height: 1.2; }
+
+/* Identity and project context */
+.case-identity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: var(--case-space) 5% clamp(150px, 26vw, 380px);
+}
+
+.case-identity__word { font: clamp(40px, 6vw, 90px) Kulture, sans-serif; }
+.case-identity p { font-size: 13px; line-height: 1.5; text-align: center; }
+.case-context dl { margin: 0; }
+.case-context dl > div { display: grid; grid-template-columns: 115px 1fr; gap: 36px; margin-bottom: 45px; }
+.case-context dt { font-size: 14px; font-style: italic; color: #c9ccce; padding-top: 5px; }
+.case-context dd { margin: 0; font-size: 15px; }
+.case-context strong { font-weight: 400; color: var(--blue); }
+
+/* Film placeholder and methodology cards */
+.case-video { margin-block: var(--case-space); }
+.case-video img { width: 100%; display: block; }
+.case-video figcaption { font-size: 12px; color: #c9ccce; margin-top: 12px; }
+.method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; }
+.method-card { position: relative; isolation: isolate; overflow: hidden; border-radius: 25px; min-height: 480px; }
+.method-card > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.method-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(#22272be8, #22272b35); z-index: -1; }
+.method-card > div { padding: 30px; }
+.method-card h2 { font: italic 16px 'Trebuchet MS', sans-serif; margin-bottom: 12px; }
+.method-card p { font-size: 15px; }
+
+/* Outcome and the two experience worlds */
+.case-result, .case-process, .case-learnings { margin-top: var(--case-space); }
+.case-section-heading { margin-bottom: 38px; }
+.case-section-heading h2 { font-size: clamp(46px, 5.5vw, 76px); letter-spacing: -0.035em; line-height: 1.2; margin-bottom: 38px; }
+.case-section-heading p { font-size: 15px; }
+.result-image { display: block; width: 100%; border-radius: 25px; }
+.experience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 40px; }
+.experience-grid img { display: block; width: 100%; height: 200px; object-fit: contain; margin-bottom: 25px; }
+.experience-grid h3 { font-size: 16px; font-weight: 400; font-style: italic; margin: 0 0 12px; }
+.experience-grid p { font-size: 15px; }
+
+/* Process illustration and four phases */
+.process-board { position: relative; width: min(1200px, 92%); margin-inline: auto; padding-top: 380px; border: 1px solid #ffffff25; }
+.process-board > img { position: absolute; width: 250px; height: 350px; object-fit: contain; top: 0; left: 50%; transform: translateX(-50%); }
+.process-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
+.process-steps li { padding: 25px 12px; text-align: center; border-right: 1px solid #ffffff25; }
+.process-steps li:last-child { border-right: 0; }
+.process-steps h3 { font-weight: 400; font-size: 20px; margin: 0 0 10px; }
+.process-steps p { font-size: 14px; font-style: italic; }
+
+/* Accessible, script-free learning disclosures */
+.case-learnings details { border: 1px solid #ffffff30; border-bottom: 0; }
+.case-learnings details:last-child { border-bottom: 1px solid #ffffff30; }
+.case-learnings summary { cursor: pointer; padding: 18px 24px; font-size: 15px; }
+.case-learnings summary:hover { color: var(--blue); }
+.case-learnings summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.case-learnings details p { padding: 0 24px 24px; font-size: 14px; color: #d9dcdf; }
+.back-to-projects { display: block; margin-top: 60px; font-size: 14px; color: var(--blue); }
+
+/* Mobile: preserve the content order and collapse wide layouts. */
+@media (max-width: 700px) {
+  .case-hero { height: 65svh; min-height: 380px; }
+  .case-navigation { inset: 24px 7% auto; }
+  .case-identity { flex-wrap: wrap; gap: 10px; padding-bottom: 110px; }
+  .case-identity p { order: 3; flex-basis: 100%; margin-top: 18px; }
+  .case-context dl > div { grid-template-columns: 1fr; gap: 8px; margin-bottom: 32px; }
+  .method-grid, .experience-grid { grid-template-columns: 1fr; gap: 35px; }
+  .method-card { min-height: 400px; }
+  .case-section-heading h2 { margin-bottom: 25px; }
+  .process-board { padding-top: 310px; }
+  .process-board > img { width: 210px; height: 290px; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .process-steps li { border-top: 1px solid #ffffff25; }
+  .process-steps li:nth-child(2) { border-right: 0; }
+  .case-learnings summary { padding: 16px; font-size: 14px; }
+}

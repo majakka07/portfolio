@@ -1,6 +1,6 @@
 # Sara Fricker — Portfolio
 
-Responsive homepage with a React Three Fiber / Three.js logo experience immediately after the hero. The rest of the homepage remains static HTML.
+Static, responsive portfolio homepage, served and built with Vite.
 
 ## Develop
 
@@ -18,13 +18,16 @@ npm run build
 npm run preview
 ```
 
-Deploy the generated `dist/` directory to a static host. The original Python-only workflow no longer processes the React module; use Vite for development and build before deployment.
-
-## Logo animation
-
-- `src/LogoScene.jsx`: extruded blue silhouette and white S from the supplied logo; procedural daisy, rose, and hydrangea materials morph into the final blue finish over eight seconds of visible playback. Gentle pulse and surface displacement settle at completion.
-- `src/logo-shape.json`: simplified silhouette traced from the supplied SVG alpha channel and its original white vector path. `assets/logo.svg` preserves the original artwork and provides the non-WebGL fallback.
-- `src/main.jsx`: lazy scene loading, visibility handling, drag/touch/keyboard rotation, pause/replay/reset controls, reduced-motion support, and rendering failure fallback.
-- The timeline plays once when the section becomes visible. Scrolling away or hiding the tab suspends playback. Reduced-motion users see the final logo and can explicitly replay. Floral patterns are generated in the shader, not external photography.
+Deploy the generated `dist/` directory to a static host. Use Vite for development and build before deployment.
 
 Kultüre is loaded locally from the supplied font. Body text uses Trebuchet MS with Arial/sans-serif fallbacks as an Oscine substitute. Homepage photos are crops from the flattened design export; original photography would allow more accurate framing. Project detail pages are future work. Confirm contact details before publishing.
+
+## Projektseiten bearbeiten
+
+- `index.html`: Homepage; die SchatzkisteVR-Bildkarte verlinkt die erste Projektseite.
+- `schatzkistevr.html`: vollständige Fallstudie mit kommentierten Abschnitten. Texte stehen direkt im HTML.
+- `styles/project.css`: lesbar gegliederte Gestaltung der Projektseiten, inklusive mobiler Darstellung.
+- `assets/projects/schatzkistevr/`: austauschbare Projektbilder. `hero.webp` ist der Hero, `video-poster.webp` die Filmvorschau, `tools.webp` und `methods.webp` die Kartenhintergründe, `result.webp` das Ergebnisbild, `treasures.webp` und `memories.webp` die Erlebniswelten und `process.webp` die Prozessgrafik.
+- `vite.config.js`: registriert beide HTML-Seiten für den Produktionsbuild. Weitere Projektseiten hier ergänzen.
+
+Die vorläufigen Bilder sind Ausschnitte der gelieferten PNG-Vorlage, keine Originalbilder. Einfach gleichnamige Dateien ersetzen oder die jeweiligen `src`-Attribute im HTML ändern; auch die `alt`-Texte anpassen. Der Hero ist ein enger Ausschnitt, damit eingebrannte Schrift nicht doppelt erscheint. Die Filmvorschau ist ausdrücklich noch kein abspielbares Video. Im HTML ist die Stelle zum Einsetzen eines echten Videos kommentiert. Die ausgeklappten Learning-Texte sind redaktionelle Entwürfe und vor Veröffentlichung zu prüfen.
