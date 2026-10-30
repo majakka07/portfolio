@@ -9,13 +9,12 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="src/tokens.css">
     <link rel="stylesheet" href="styles/studies.css">
-  </head>
+      <link rel="stylesheet" href="styles/navigation.css">
+</head>
   <body class="study-page">
-    <a class="skip-link" href="#main">Zum Inhalt springen</a>
-    <header class="study-header"><nav class="study-nav container" aria-label="Project navigation">
-        <a class="study-logo" href="index.html" aria-label="Sara Fricker — Homepage"><img src="assets/logo.svg" width="44" height="44" alt=""></a>
-        <div><a href="index.html#portfolio">← Portfolio</a><a href="typespace.html">Next project ↗</a></div>
-      </nav></header>
+    <!-- Shared markup is rendered by the Vite site-layout plugin. -->
+    <!-- SITE_NAV -->
+
     <main id="main">
       <!-- HERO: Temporary crop from the reference; replace with the original photograph. -->
       <section class="study-hero lesson-hero" aria-labelledby="project-title">
@@ -87,10 +86,8 @@
         </div>
       </section>
     </main>
-    <nav class="study-bottom-nav container" aria-label="Weitere Projekte">
-      <a href="index.html#portfolio">← Alle Projekte</a>
-      <a href="typespace.html">TypeSpace ↗</a>
-    </nav>
+
+    <!-- PROJECT_NAV -->
     <footer id="kontakt">
       <div class="footer-title">Sara <span>[ <img src="assets/pink.webp" alt=""> ]</span> Lee ✳</div>
       <div class="footer-grid">
@@ -99,5 +96,6 @@
         <div><h2>Links</h2><a href="https://github.com/majakka07">GitHub ↗</a><a href="mailto:sarafricker@gmail.com">Kontakt ↗</a></div>
       </div>
     </footer>
-  </body>
+      <script type="module" src="src/navigation.js"></script>
+</body>
 </html>

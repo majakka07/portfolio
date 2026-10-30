@@ -6,19 +6,16 @@
     <meta name="description" content="SchatzkisteVR – eine menschenzentrierte VR-Webanwendung für Menschen mit Demenz. Bachelorarbeit von Sara Fricker.">
     <title>SchatzkisteVR — Sara Fricker</title>
     <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="src/tokens.css">
+<link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles/project.css">
-  </head>
+      <link rel="stylesheet" href="styles/navigation.css">
+</head>
   <body class="project-page">
+    <!-- Shared markup is rendered by the Vite site-layout plugin. -->
+    <!-- SITE_NAV -->
     <!-- HERO: Replace hero.webp with the original landscape render. -->
     <header class="case-hero">
-      <nav class="case-navigation" aria-label="Projektnavigation">
-        <a href="index.html" aria-label="Zur Startseite"><img class="case-logo" src="assets/logo.svg" alt="Sara Fricker"></a>
-        <div class="case-navigation__actions">
-          <a href="#projektinhalt"><span aria-hidden="true">↓</span> Inhalt</a>
-          <a href="index.html#portfolio"><span aria-hidden="true">×</span> Schliessen</a>
-        </div>
-      </nav>
       <img class="case-hero__image" src="assets/projects/schatzkistevr/hero.webp" alt="Ausschnitt einer pastellfarbenen virtuellen Landschaft">
       <h1>SchatzkisteVR</h1>
     </header>
@@ -117,9 +114,10 @@
         <details><summary>Emotionale Orientierung ist genauso wichtig wie visuelle Orientierung</summary><p>Vertraute Inhalte und eine ruhige Gestaltung können helfen, Sicherheit und persönliche Nähe zu vermitteln.</p></details>
         <details><summary>Vertrauen ist die Grundlage guter UX-Forschung</summary><p>Zuhören, Zeit und ein respektvoller Umgang bilden die Grundlage für ein Verständnis der persönlichen Bedürfnisse.</p></details>
       </section>
-      <a class="back-to-projects case-width" href="index.html#portfolio">↖ Zurück zum Portfolio</a>
+
     </main>
 
+    <!-- PROJECT_NAV -->
     <footer id="kontakt">
       <div class="footer-title">Sara <span>[ <img src="assets/pink.webp" alt=""> ]</span> Lee ✳</div>
       <div class="footer-grid">
@@ -128,5 +126,6 @@
         <div><h2>Links</h2><a href="https://github.com/majakka07">GitHub ↗</a><a href="mailto:sarafricker@gmail.com">Kontakt ↗</a></div>
       </div>
     </footer>
-  </body>
+      <script type="module" src="src/navigation.js"></script>
+</body>
 </html>

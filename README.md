@@ -40,3 +40,16 @@ Die vorläufigen Bilder sind Ausschnitte der gelieferten PNG-Vorlage, keine Orig
 - `assets/projects/lessonflow/`: vorläufige Bildausschnitte aus der Vorlage, mit sprechenden Dateinamen. Ersetze die Dateien oder ändere `src` und `alt` im entsprechenden HTML-Abschnitt. Bildtexte innerhalb dieser Ausschnitte bleiben Teil des Bildes, bis Originalgrafiken vorliegen.
 
 Designsystem: Kultüre ist unter dem vorhandenen CSS-Namen `Kulture` eingebunden. Die vom Benutzer freigegebene Trebuchet-MS-Alternative zu Oscine bleibt dokumentiert. Die neuen Seiten verwenden Graphit `#494B4F`; TypeSpace nutzt zusätzlich den vorgesehenen hellen Editorial-Modus. Statische HTML-Seiten bleiben wegen der bestehenden Vite-Multipage-Struktur erhalten, statt für diese statischen Inhalte React einzuführen. TypeSpace ist noch keine fertige Fallstudie. Keine Animationen hinzugefügt.
+
+## Shared navigation
+
+Use **`npm run dev`** for local development. The navigation is inserted into each page by Vite at development/build time, so opening the source HTML directly or serving it with Python will not render the shared components. Production output in `dist/` contains complete HTML and works without JavaScript.
+
+- `src/site-layout.js`: the single project list, shared navbar, thumbnail project directory, and related-project cards. Add future case studies to `projects` here; do not duplicate navigation in each page.
+- `styles/navigation.css`: responsive navbar, focus states, project cards, homepage shortcuts, and initial About/Playground layouts. Uses the existing design-system tokens and the owner-approved Trebuchet body fallback.
+- `src/navigation.js`: optional Escape, outside-click, and focus-leave dismissal for the native project-index disclosure. The index links still work without JavaScript.
+- `<!-- SITE_NAV -->` / `<!-- PROJECT_NAV -->`: insertion points in the page HTML. Primary navigation always offers Work, About and Playground; project pages include an anchored return to `index.html#portfolio` and two other project cards.
+- `about.html`: initial destination using existing About copy, ready for its own design.
+- `playground.html`: clearly marked starting page for future experiments.
+
+The navigation is sticky to keep the project return available on long case studies. Anchor offsets keep target content below it. Main links stay visible on mobile, avoiding an additional nested menu. The project directory is a disclosure rather than a modal: it does not trap focus, and Escape restores focus to its trigger. No new motion or animation dependencies were added. The TypeSpace preview status remains explicit.
