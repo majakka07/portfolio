@@ -1,0 +1,89 @@
+/* Shared case-study components. All UI colors and spacing use the design system.
+   Oscine is unavailable: Trebuchet MS is the owner-approved temporary fallback.
+   The supplied display file is registered as Kulture in styles.css. */
+.study-page {
+  --font-display: Kulture, sans-serif;
+  --font-body: 'Trebuchet MS', Arial, sans-serif;
+  --white: var(--color-white);
+  background: var(--color-canvas);
+  font-family: var(--font-body);
+  color: var(--color-text);
+}
+.study-page h1, .study-page h2, .study-page .footer-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+.study-page p { font-size: 16px; line-height: 1.625; }
+.study-page p + p { margin-top: var(--space-6); }
+.study-page h3 { font: 400 20px/1.5 var(--font-body); margin: 0 0 var(--space-3); }
+.study-page a { min-height: 44px; display: inline-flex; align-items: center; }
+.study-page a:hover, .study-page a:focus-visible { text-decoration: underline; }
+.study-page img { max-width: 100%; }
+.skip-link { position: absolute; left: 20px; top: -100px; z-index: 10; padding: 12px 24px; background: var(--color-navy-950); }
+.skip-link:focus { top: 12px; }
+.study-header { background: var(--color-graphite-800); }
+.study-nav { display: flex; align-items: center; justify-content: space-between; padding-block: var(--space-6); gap: var(--space-4); }
+.study-nav > div { display: flex; gap: var(--space-6); }
+.study-nav a { font-size: 13px; }
+.study-logo img { display: block; }
+.study-hero { min-height: 480px; display: grid; place-content: center; position: relative; }
+.study-title { position: relative; text-align: center; padding-block: var(--space-16); }
+.study-title h1 { margin: var(--space-6) 0; }
+.study-title h1 span { display: inline-block; }
+.study-eyebrow { font-size: 13px !important; letter-spacing: .02em; }
+.lesson-hero {
+  isolation: isolate;
+  background: var(--color-navy-950);
+}
+/* Only the upper strip of the flattened reference is used, to exclude its baked-in title. */
+.lesson-hero::before { content: ''; position: absolute; inset: 0; z-index: -2; background: url('../assets/projects/lessonflow/hero.webp') center top / cover; }
+.lesson-hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--color-navy-950); opacity: .8; }
+.reading-width { width: min(calc(100% - 40px), 720px); margin-inline: auto; }
+.study-section { margin-block: var(--space-16); }
+.study-section-heading { margin-bottom: var(--space-8); }
+.study-section-heading h2 { margin-bottom: var(--space-6); }
+.study-label { font: 400 14px/1.6 var(--font-body) !important; color: var(--color-text-muted); margin-bottom: var(--space-6); }
+.study-brief p { max-width: 68ch; }
+.study-media { margin: 0; }
+.study-media img { display: block; width: 100%; height: auto; border-radius: var(--radius-md); }
+.study-media figcaption { margin-top: var(--space-3); font-size: 14px; color: var(--color-text-muted); }
+.study-two-column, .collaboration-grid, .editorial-grid { display: grid; gap: var(--space-8); align-items: center; }
+.design-detail { margin-top: var(--space-16); }
+.design-detail > p { color: var(--color-text-muted); margin-bottom: var(--space-6); }
+.design-detail .study-media { max-width: 560px; }
+.collaboration-grid .study-media { max-width: 580px; }
+.study-bottom-nav { display: flex; justify-content: space-between; gap: var(--space-6); padding-block: var(--space-8); border-block: 1px solid var(--color-muted-dark); }
+.study-bottom-nav a { font-size: 14px; }
+.study-page .footer-title { color: var(--color-brand-blue-500); }
+.study-page .footer-grid a { display: flex; }
+.study-page .footer-grid small { color: var(--color-muted-dark); }
+.study-intro { margin-top: var(--space-6); }
+.type-hero { grid-template-columns: 1fr; gap: var(--space-8); padding: var(--space-8) 20px; }
+.type-hero > img { width: min(100%, 560px); height: auto; justify-self: center; border-radius: var(--radius-md); }
+.reference-notice { border-left: 2px solid var(--color-brand-blue-500); padding: var(--space-6); margin-top: var(--space-8); }
+.reference-notice p { color: var(--color-text-muted); }
+.editorial-module { padding-block: var(--space-16); background: var(--color-canvas); color: var(--color-text); }
+.editorial-module h2 { margin-block: var(--space-6); }
+.editorial-module .study-media { max-width: 560px; }
+@media (min-width: 768px) {
+  .reading-width { width: min(calc(100% - 64px), 720px); }
+  .study-section { margin-block: 80px; }
+  .study-two-column { grid-template-columns: 1fr 1.4fr; }
+  .collaboration-grid, .editorial-grid { grid-template-columns: 1fr 1fr; gap: var(--space-16); }
+  .study-brief { display: grid; grid-template-columns: 120px 1fr; gap: var(--space-8); }
+  .lesson-hero { min-height: 640px; }
+  .type-hero { grid-template-columns: 1fr 1fr; padding: var(--space-16); }
+}
+@media (min-width: 1024px) {
+  .study-section { margin-block: var(--space-32); }
+  .study-hero { min-height: 720px; }
+  .type-hero { gap: var(--space-16); }
+}
+@media (max-width: 599px) {
+  .study-nav > div { gap: var(--space-3); }
+  .study-nav a { font-size: 12px; }
+  .study-page .footer-grid { gap: var(--space-6); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .study-page *, .study-page *::before, .study-page *::after { animation: none; transition: none; scroll-behavior: auto; }
+}

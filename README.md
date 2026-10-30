@@ -31,3 +31,12 @@ Kultüre is loaded locally from the supplied font. Body text uses Trebuchet MS w
 - `vite.config.js`: registriert beide HTML-Seiten für den Produktionsbuild. Weitere Projektseiten hier ergänzen.
 
 Die vorläufigen Bilder sind Ausschnitte der gelieferten PNG-Vorlage, keine Originalbilder. Einfach gleichnamige Dateien ersetzen oder die jeweiligen `src`-Attribute im HTML ändern; auch die `alt`-Texte anpassen. Der Hero ist ein enger Ausschnitt, damit eingebrannte Schrift nicht doppelt erscheint. Die Filmvorschau ist ausdrücklich noch kein abspielbares Video. Im HTML ist die Stelle zum Einsetzen eines echten Videos kommentiert. Die ausgeklappten Learning-Texte sind redaktionelle Entwürfe und vor Veröffentlichung zu prüfen.
+
+## LessonFlow und TypeSpace
+
+- `lessonflow.html`: Fallstudie mit editierbaren Abschnitten für Projektidee, Visual Design, Farbwelt, Typografie, UI-Elemente, Ikonografie, Navigation und Zusammenarbeit.
+- `typespace.html`: vorläufiges Grundgerüst. Der TypeSpace-Upload überschritt das Downloadlimit von 32 MiB; die vollständige Vorlage konnte noch nicht geprüft werden. Eine kleinere PNG-/JPG-Datei wird benötigt.
+- `styles/studies.css`: gemeinsame, lesbar gegliederte Komponenten für diese Seiten; nutzt `src/tokens.css` für Farben, Abstände und responsive Grundlagen.
+- `assets/projects/lessonflow/`: vorläufige Bildausschnitte aus der Vorlage, mit sprechenden Dateinamen. Ersetze die Dateien oder ändere `src` und `alt` im entsprechenden HTML-Abschnitt. Bildtexte innerhalb dieser Ausschnitte bleiben Teil des Bildes, bis Originalgrafiken vorliegen.
+
+Designsystem: Kultüre ist unter dem vorhandenen CSS-Namen `Kulture` eingebunden. Die vom Benutzer freigegebene Trebuchet-MS-Alternative zu Oscine bleibt dokumentiert. Die neuen Seiten verwenden Graphit `#494B4F`; TypeSpace nutzt zusätzlich den vorgesehenen hellen Editorial-Modus. Statische HTML-Seiten bleiben wegen der bestehenden Vite-Multipage-Struktur erhalten, statt für diese statischen Inhalte React einzuführen. TypeSpace ist noch keine fertige Fallstudie. Keine Animationen hinzugefügt.

@@ -7,6 +7,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         home: fileURLToPath(new URL('./index.html', import.meta.url)),
+        lessonflow: fileURLToPath(new URL('./lessonflow.html', import.meta.url)),
+        typespace: fileURLToPath(new URL('./typespace.html', import.meta.url)),
         schatzkistevr: fileURLToPath(new URL('./schatzkistevr.html', import.meta.url)),
       },
     },
