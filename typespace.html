@@ -1,11 +1,14 @@
 <!doctype html>
 <html lang="de">
+<!-- TypeSpace starting layout: temporary content until the smaller reference file is available. -->
   <head>
+    <!-- Page title, search-engine description, and mobile viewport settings. -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="TypeSpace — Visual Design und digitale Gestaltung von Sara Fricker.">
     <title>TypeSpace — Sara Fricker</title>
     <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+    <!-- Styles load in order: shared foundations, page styling, then navigation overrides. -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="src/tokens.css">
     <link rel="stylesheet" href="styles/studies.css">
@@ -13,6 +16,7 @@
 </head>
   <body class="study-page">
     <!-- Shared markup is rendered by the Vite site-layout plugin. -->
+    <!-- Shared navbar: edit src/site-layout.js, not this insertion marker. -->
     <!-- SITE_NAV -->
 
     <main id="main">
@@ -30,6 +34,7 @@
         <p class="study-eyebrow">Print & Layout</p>
         <h2 class="type-heading-h2">TypeSpace</h2>
         <p class="study-intro">Eine Sammlung von Arbeiten aus den Bereichen Typografie, Print und Layout.</p>
+        <!-- Temporary notice: remove after the complete TypeSpace reference has been implemented. -->
         <aside class="reference-notice"><h3>Projektinhalt folgt</h3><p>Die TypeSpace-Vorlage konnte aufgrund der Dateigrösse noch nicht eingelesen werden. Dieses Grundgerüst wird nach Erhalt der verkleinerten Vorlage ergänzt.</p></aside>
       </section>
       <!-- Light editorial variant from the design system. Replace the placeholder media and caption. -->
@@ -41,7 +46,9 @@
       </section>
     </main>
 
+    <!-- Next-project cards: generated from the project list in src/site-layout.js. -->
     <!-- PROJECT_NAV -->
+    <!-- CONTACT FOOTER: brand lettering, location, email address, and external links. -->
     <footer id="kontakt">
       <div class="footer-title">Sara <span>[ <img src="assets/pink.webp" alt=""> ]</span> Lee ✳</div>
       <div class="footer-grid">
@@ -50,6 +57,7 @@
         <div><h2>Links</h2><a href="https://github.com/majakka07">GitHub ↗</a><a href="mailto:sarafricker@gmail.com">Kontakt ↗</a></div>
       </div>
     </footer>
-      <script type="module" src="src/navigation.js"></script>
+      <!-- Optional menu enhancements: Escape, outside-click, and focus handling. -->
+    <script type="module" src="src/navigation.js"></script>
 </body>
 </html>

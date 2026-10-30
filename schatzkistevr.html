@@ -1,11 +1,14 @@
 <!doctype html>
 <html lang="de">
+<!-- SchatzkisteVR case study: context, film preview, methods, outcome, process, and learnings. -->
   <head>
+    <!-- Page title, search-engine description, and mobile viewport settings. -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="SchatzkisteVR – eine menschenzentrierte VR-Webanwendung für Menschen mit Demenz. Bachelorarbeit von Sara Fricker.">
     <title>SchatzkisteVR — Sara Fricker</title>
     <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+    <!-- Styles load in order: shared foundations, page styling, then navigation overrides. -->
     <link rel="stylesheet" href="src/tokens.css">
 <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles/project.css">
@@ -13,6 +16,7 @@
 </head>
   <body class="project-page">
     <!-- Shared markup is rendered by the Vite site-layout plugin. -->
+    <!-- Shared navbar: edit src/site-layout.js, not this insertion marker. -->
     <!-- SITE_NAV -->
     <!-- HERO: Replace hero.webp with the original landscape render. -->
     <header class="case-hero">
@@ -117,7 +121,9 @@
 
     </main>
 
+    <!-- Next-project cards: generated from the project list in src/site-layout.js. -->
     <!-- PROJECT_NAV -->
+    <!-- CONTACT FOOTER: brand lettering, location, email address, and external links. -->
     <footer id="kontakt">
       <div class="footer-title">Sara <span>[ <img src="assets/pink.webp" alt=""> ]</span> Lee ✳</div>
       <div class="footer-grid">
@@ -126,6 +132,7 @@
         <div><h2>Links</h2><a href="https://github.com/majakka07">GitHub ↗</a><a href="mailto:sarafricker@gmail.com">Kontakt ↗</a></div>
       </div>
     </footer>
-      <script type="module" src="src/navigation.js"></script>
+      <!-- Optional menu enhancements: Escape, outside-click, and focus handling. -->
+    <script type="module" src="src/navigation.js"></script>
 </body>
 </html>

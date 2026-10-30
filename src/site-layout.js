@@ -2,6 +2,9 @@
  * Add future case studies here; the index and related cards update together.
  * Real anchors remain usable without client-side JavaScript.
  */
+// PROJECT CATALOGUE
+// slug matches the HTML filename. image is the thumbnail; note is an optional status.
+// Keep this order consistent with the homepage. Related cards follow this order.
 export const projects = [
   { slug: 'schatzkistevr', title: 'SchatzkisteVR', discipline: 'UI/UX · WebVR', year: '2024–2025', image: 'assets/schatzkiste.webp' },
   { slug: 'typespace', title: 'TypeSpace', discipline: 'Visual Design · Print', year: '2021–2026', image: 'assets/type-space.webp', note: 'Preview' },
@@ -15,15 +18,23 @@ function withIcons(html) {
     .replaceAll('↖', icon('M19 19 5 5M5 19V5h14'));
 }
 
+/** Build the shared header for an HTML filename without its extension.
+ * Project pages belong to Work; About and Playground receive their own active state.
+ * aria-current exposes the active destination to assistive technology.
+ */
 export function siteNavigation(page) {
   const project = projects.find(item => item.slug === page);
   const active = project || page === 'index' ? 'work' : page;
+  // PRIMARY LINKS: edit these entries to change the top-level destinations.
   const mainLinks = [
     ['work', 'index.html#portfolio', 'Work'],
     ['about', 'about.html', 'About'],
     ['playground', 'playground.html', 'Playground'],
   ].map(([key, href, label]) => `<a href="${href}"${key === active ? ' aria-current="' + (project ? 'true' : 'page') + '"' : ''}>${label}</a>`).join('\n');
 
+  // The first row holds the brand and main links. The second provides context,
+  // a return to the work index, and the thumbnail project directory.
+  // The skip-link target differs on the older SchatzkisteVR page; keep its existing ID.
   return withIcons(`
     <a class="site-skip" href="#${page === 'schatzkistevr' ? 'projektinhalt' : 'main'}">Skip to content</a>
     <header class="site-header">
@@ -51,9 +62,14 @@ export function siteNavigation(page) {
     </header>`);
 }
 
+/** Build the two related-project cards shown above each case study’s footer.
+ * Non-project pages return no markup. Modulo wraps the last project back to the first.
+ */
 export function projectNavigation(page) {
   const index = projects.findIndex(item => item.slug === page);
+  // About, Playground, and the homepage do not need related-project cards.
   if (index < 0) return '';
+  // With the current three projects, show the other two without repeating this page.
   const next = [projects[(index + 1) % projects.length], projects[(index + 2) % projects.length]];
   return withIcons(`<section class="project-explore" aria-labelledby="explore-title">
       <div class="explore-heading"><div><p>There’s more to discover</p><h2 id="explore-title">Keep exploring</h2></div><a class="explore-all" href="index.html#portfolio">All projects <span aria-hidden="true">↗</span></a></div>
