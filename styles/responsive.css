@@ -1,0 +1,128 @@
+/* Existing mobile overrides for the base, homepage and footer; loaded last. */
+@media (max-width: 760px) {
+  .hero {
+    height: 85svh;
+    min-height: 570px;
+  }
+  .navigation {
+    left: 7%;
+    right: 7%;
+    top: 28px;
+  }
+  .hero-title {
+    left: 12%;
+    top: 43%;
+  }
+  .hero-title p {
+    font-size: 12px;
+  }
+  .hero h1 {
+    font-size: 90px;
+  }
+  .hero-bottom {
+    left: 8%;
+    right: 8%;
+    font-size: 10px;
+    gap: 15px;
+  }
+  .intro {
+    min-height: 500px;
+    padding: 70px 6%;
+  }
+  .intro-lines {
+    font-size: clamp(24px, 5vw, 38px);
+    line-height: 1.45;
+  }
+  .intro-lines p {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 17px;
+  }
+  .intro small {
+    font-size: 11px;
+  }
+  .bracket img {
+    width: 40px;
+    height: 40px;
+  }
+  .project {
+    min-height: 650px;
+    padding: 55px 7%;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .project h2,
+  .project-word {
+    font-size: 46px;
+  }
+  .project-card {
+    grid-column: 1/-1;
+    grid-row: 2;
+    max-width: 310px;
+    justify-self: center;
+    width: 100%;
+  }
+  .project-word {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .portfolio-intro {
+    min-height: 380px;
+  }
+  .portfolio-intro p {
+    grid-column: 1/-1;
+    grid-row: 2;
+    max-width: 260px;
+  }
+  .focus {
+    min-height: 520px;
+    padding: 90px 7%;
+  }
+  .focus h2 {
+    font-size: clamp(34px, 6.5vw, 50px);
+  }
+  .focus p {
+    font-size: 12px;
+    max-width: 260px;
+  }
+  .about-copy {
+    padding: 65px 9%;
+  }
+  .about-copy p {
+    font-size: 14px;
+  }
+  .everyday {
+    min-height: 450px;
+    padding: 65px 8%;
+  }
+  .everyday h2 {
+    font-size: 50px;
+  }
+  .coffee-title {
+    font-size: 17px;
+  }
+  .everyday > img {
+    width: 95%;
+  }
+  footer {
+    padding: 65px 7%;
+  }
+  .footer-title {
+    font-size: 15vw;
+    gap: 10px;
+    margin-bottom: 50px;
+  }
+  .footer-title span {
+    gap: 7px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    font-size: 13px;
+  }
+  .footer-grid > div:first-child {
+    grid-column: 1/-1;
+  }
+  .services {
+    font-size: 20px;
+  }
+}

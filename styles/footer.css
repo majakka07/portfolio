@@ -1,0 +1,61 @@
+/* Shared contact footer and visually hidden text utility. */
+footer {
+  padding: 110px 4% 90px;
+  overflow: hidden;
+}
+.footer-title {
+  font-size: clamp(65px, 13vw, 190px);
+  white-space: nowrap;
+  letter-spacing: -0.045em;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  margin-bottom: 80px;
+}
+.footer-title span {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.footer-title img {
+  width: clamp(50px, 10vw, 150px);
+  height: clamp(50px, 10vw, 150px);
+  object-fit: cover;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.4fr 1fr;
+  gap: 35px;
+  font-size: 15px;
+}
+.footer-grid h2 {
+  font:
+    11px 'Trebuchet MS',
+    sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.footer-grid p {
+  margin-bottom: 20px;
+}
+.footer-grid a {
+  display: block;
+  margin-bottom: 10px;
+}
+.footer-grid small {
+  font-size: 11px;
+}
+.services {
+  color: var(--blue);
+  margin-top: 24px;
+  font-size: 22px;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}

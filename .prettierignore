@@ -1,0 +1,9 @@
+node_modules/
+dist/
+assets/
+skills-lock.json
+DESIGN_SYSTEM.md
+AGENTS.md
+package-lock.json
+.agents/
+.codex/
