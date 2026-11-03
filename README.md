@@ -81,3 +81,24 @@ Prettier keeps HTML, CSS, JavaScript and documentation readable. Strict HTML whi
 - SchatzkisteVR's film preview is a poster, not a playable video. Its HTML marks where to insert the real video. Expanded learning copy is an editorial draft.
 - TypeSpace remains a preview scaffold: the supplied upload exceeded the 32 MiB download limit, so its complete reference has not been reviewed.
 - About and Playground are starting pages. Confirm contact details and draft copy before publishing.
+
+## Ocean homepage (React Three Fiber)
+
+The homepage uses the supplied underwater scene for a surface-to-seabed scroll journey. This is a user-requested immersive homepage variant: the original project pages keep their editorial layouts and individual artwork. Kultüre, the existing blue/navy tokens and the approved body-font fallback are reused. The supplied GLB contains a **moss-textured logo**, which remains intact; the blue/white SVG is used for navigation and the static fallback.
+
+- `src/ocean/main.tsx`: React entry, live reduced-motion preference, pause/resume, error boundary and GSAP content reveals. The controls render outside the decorative canvas.
+- `src/ocean/journey.ts`: camera positions, look-at targets and small roll angles. Scroll progress is shared without React rerenders. Water is at `y=0`, the logo at `y=1.1`, and the floor at `y=-12`.
+- `src/ocean/HeroScene.tsx`: a separate Three.js/R3F scene inside the hero, showing the complete uploaded GLB with its original water, ground, logo and transforms. Camera framing adapts to mobile. Demand rendering avoids a continuous animation loop, and the hero renderer unmounts offscreen. The scroll-scene render loop pauses while the hero is visible.
+- `src/ocean/model.ts`: shared GPU disposal for the independently owned GLB instances.
+- `src/ocean/OceanScene.tsx`: GLB loading, lighting, damped camera rig, underwater particles, light shafts and procedural seabed caustics. GPU resources and listeners are released on unmount; rendering stops in hidden tabs.
+- `src/ocean/Water.tsx`: two-sided procedural water surface and underwater distance fade.
+- `styles/ocean.css`: scoped homepage layouts, readable overlays, responsive behavior and static fallback.
+- `public/models/underwater.glb`: web copy of the uploaded Underwater.glb. Embedded textures are resized to at most 1024 pixels, reducing the file from 26.4 MB to 12.6 MB without changing geometry. In the scroll scene, the GLB's bounded glass cube and flat floor are hidden in favor of horizon-sized water/floor shaders for the camera journey. In the hero, every original mesh remains visible. The reuploaded Underwater.glb was verified byte-for-byte identical to the original source; both scenes reuse the existing optimized web asset.
+
+The browser scrolls the normal document; there is no wheel interception, nested scroll area or mandatory loading screen. All text and project links are HTML. With JavaScript disabled, WebGL unavailable, a scene-loading failure, or reduced motion enabled, content remains readable with a static logo/background. Reduced-motion mode does not mount the renderer or download the model. The pause button switches to this static view and can reactivate 3D. Animation uses a maximum device pixel ratio of 1.5.
+
+Run `npm run typecheck`, `npm run format:check` and `npm run build` after changes. For reproducible camera screenshots, `?t=0` shows the surface, `?t=0.2` the underwater introduction and `?t=1` the seabed footer; the query freezes camera progress and shader time. Test the reduced-motion path using the browser/OS preference. Review both paths at 390, 768, 1440 and 1920 pixels. Actual frame rate depends on the device/GPU; this is not a performance guarantee.
+
+### Browser regression checks
+
+`npm run test:e2e` checks the seabed camera, pause/resume, reduced-motion downloads and responsive widths, model-load failure, and no-JavaScript reading/navigation. Install a browser once with `npx playwright install chromium`. To use an existing Chromium binary, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/path/to/chromium` for the test command. The tests start Vite or reuse a running server at port 5173. Test traces/screenshots from failures are local ignored artifacts.

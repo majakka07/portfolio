@@ -1,0 +1,646 @@
+/* HOMEPAGE OCEAN VARIANT
+ * The document scrolls normally over a fixed R3F scene. All rules are scoped to
+ * .ocean-page; case studies keep their original layout and project identity. */
+.ocean-page {
+  --ocean-gutter: clamp(24px, 6vw, 96px);
+  --ocean-reading: min(1200px, calc(100% - var(--ocean-gutter) * 2));
+  background: var(--color-navy-950);
+  color: var(--color-white);
+  overflow-x: clip;
+}
+.ocean-page main,
+.ocean-page .dive-footer {
+  position: relative;
+  z-index: 2;
+}
+.ocean-page a {
+  color: inherit;
+}
+.ocean-page a:focus-visible,
+.ocean-page button:focus-visible {
+  outline: 3px solid var(--color-brand-blue-500);
+  outline-offset: 6px;
+}
+.ocean-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    var(--color-brand-blue-500),
+    var(--color-navy-950) 85%
+  );
+}
+.ocean-canvas canvas {
+  width: 100%;
+  height: 100%;
+}
+/* A restrained scrim protects text contrast without flattening the ocean scene. */
+.ocean-atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, #030a1800 18%, #030a1840 70%, #030a18b3);
+  opacity: var(--dive, 1);
+}
+.ocean-page .site-header--home {
+  position: fixed;
+  inset: 0 0 auto;
+  background: #030a1833;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid #ffffff26;
+}
+.ocean-page .site-header--home .site-bar {
+  width: calc(100% - var(--ocean-gutter) * 2);
+}
+.ocean-page .site-context {
+  display: none;
+}
+.ocean-page .site-primary {
+  margin-left: auto;
+}
+.ocean-page .home-nav-dock {
+  background: transparent;
+}
+.ocean-page .site-skip {
+  z-index: 100;
+}
+.ocean-page .dive-section {
+  width: var(--ocean-reading);
+  margin-inline: auto;
+}
+.ocean-page .dive-eyebrow {
+  font: 400 13px/1.5 var(--font-body);
+  letter-spacing: 0.03em;
+  margin: 0 0 32px;
+}
+.ocean-page .section-number {
+  color: var(--color-brand-blue-500);
+  margin-right: 24px;
+}
+
+/* SURFACE — generous space around the centered, original logo. */
+.dive-surface {
+  height: 100svh;
+  min-height: 700px;
+  position: relative;
+  background: linear-gradient(180deg, #030a1800 50%, #030a1870);
+}
+.surface-coordinate {
+  position: absolute;
+  top: 140px;
+  left: var(--ocean-gutter);
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+}
+.surface-logo {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  width: clamp(120px, 14vw, 200px);
+  height: auto;
+  transition: opacity 320ms;
+}
+.ocean-live .surface-logo {
+  opacity: 0;
+}
+.surface-copy {
+  position: absolute;
+  bottom: 64px;
+  left: var(--ocean-gutter);
+  right: var(--ocean-gutter);
+}
+.ocean-page .surface-copy .dive-eyebrow {
+  margin-bottom: 12px;
+}
+.surface-copy h1 {
+  font-size: clamp(48px, 7.2vw, 104px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #ffffff59;
+}
+.title-star {
+  color: var(--color-brand-blue-200);
+  font-family: var(--font-body);
+  font-size: 0.65em;
+}
+.surface-baseline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-top: 16px;
+  font-size: 13px;
+}
+.dive-down {
+  display: inline-flex;
+  align-items: center;
+  gap: 32px;
+  min-height: 44px;
+}
+.dive-down span {
+  font-size: 24px;
+}
+.surface-note {
+  position: absolute;
+  right: var(--ocean-gutter);
+  top: 150px;
+  font-size: 12px;
+  writing-mode: vertical-rl;
+}
+
+/* INTRODUCTION — DOM text keeps the full statement selectable and accessible. */
+.dive-introduction {
+  min-height: 135svh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-block: 150px;
+}
+.dive-introduction > div {
+  max-width: 880px;
+}
+.dive-introduction h2 {
+  font-size: clamp(48px, 7.2vw, 104px);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  margin-bottom: 24px;
+}
+.dive-introduction h2 span {
+  color: var(--color-brand-blue-500);
+}
+.dive-statement {
+  font:
+    400 clamp(30px, 3.5vw, 42px)/1.2 Kulture,
+    sans-serif;
+  letter-spacing: -0.02em;
+}
+.dive-statement > span {
+  color: var(--color-muted-dark);
+}
+.dive-intro-detail {
+  font-size: 20px;
+  line-height: 1.5;
+  max-width: 540px;
+  margin: 32px 0 24px;
+}
+.dive-intro-detail em {
+  color: var(--color-brand-blue-500);
+  font-style: normal;
+}
+.dive-text-link {
+  display: inline-flex;
+  gap: 48px;
+  align-items: center;
+  min-height: 44px;
+  border-bottom: 1px solid #ffffff66;
+  font-size: 14px;
+}
+.ocean-margin-note {
+  position: absolute;
+  right: 0;
+  bottom: 20%;
+  writing-mode: vertical-rl;
+  font-size: 12px;
+  color: var(--color-muted-dark);
+}
+
+/* WORK — alternating, spacious image frames float past the forward-moving camera. */
+.dive-work-heading {
+  padding-block: 100px 120px;
+}
+.dive-work-heading h2 {
+  font-size: clamp(64px, 7.2vw, 104px);
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+}
+.dive-work-heading h2 span {
+  color: var(--color-brand-blue-500);
+}
+.dive-work-heading > p:last-child {
+  font-size: 16px;
+  line-height: 1.625;
+  margin-top: 32px;
+}
+.dive-project {
+  min-height: 120svh;
+  padding-block: 80px 120px;
+  perspective: 1000px;
+}
+.dive-project-link {
+  display: block;
+  width: 72%;
+  max-width: 800px;
+}
+.dive-project--right .dive-project-link {
+  margin-left: auto;
+}
+.dive-project-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+  font-size: 13px;
+  color: var(--color-muted-dark);
+}
+.dive-project-visual {
+  position: relative;
+  transform-origin: center;
+}
+.dive-project-visual img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.35;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-sm);
+}
+.project-open {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  background: var(--color-navy-950);
+  color: var(--color-white);
+  font-size: 24px;
+  transition: background var(--motion-fast);
+}
+.dive-project-link:hover .project-open {
+  background: var(--color-brand-blue-700);
+}
+.dive-project-caption {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: end;
+  padding-top: 32px;
+}
+.dive-project-caption h3 {
+  font:
+    400 clamp(38px, 4.5vw, 64px)/1.06 Kulture,
+    sans-serif;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+.dive-project-caption h3 span {
+  color: var(--color-brand-blue-500);
+}
+.dive-project-caption p {
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: right;
+}
+.dive-project-cta {
+  display: inline-flex;
+  gap: 32px;
+  align-items: center;
+  font-size: 13px;
+  min-height: 44px;
+  margin-top: 16px;
+  border-bottom: 1px solid #ffffff40;
+}
+.dive-playground {
+  padding-block: 64px 160px;
+}
+.dive-playground > a {
+  font:
+    400 clamp(28px, 3.5vw, 42px)/1.2 Kulture,
+    sans-serif;
+  display: inline-block;
+  min-height: 44px;
+}
+.dive-playground > a span {
+  color: var(--color-brand-blue-500);
+}
+.dive-playground > p:last-child {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--color-muted-dark);
+}
+
+/* SEABED — the footer is part of the document, never a texture or a canvas link. */
+.ocean-page .dive-footer {
+  min-height: 100svh;
+  padding: 120px var(--ocean-gutter) 90px;
+  display: flex;
+  align-items: end;
+  background: linear-gradient(180deg, #030a1800, #030a1877);
+}
+.dive-footer > div {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+.dive-footer h2 {
+  position: relative;
+  font-size: clamp(64px, 10vw, 144px);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  margin-bottom: 32px;
+}
+.dive-footer h2 > span:first-child {
+  color: var(--color-brand-blue-500);
+}
+.contact-star {
+  position: absolute;
+  right: 0;
+  top: 10%;
+  font: 400 0.8em/1 var(--font-body);
+  color: var(--color-brand-blue-500);
+}
+.dive-email {
+  display: inline-flex;
+  gap: 32px;
+  align-items: center;
+  min-height: 44px;
+  border-bottom: 1px solid #ffffff66;
+  font-size: clamp(16px, 2vw, 28px);
+  padding-bottom: 12px;
+}
+.dive-footer-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid #ffffff40;
+  font-size: 14px;
+}
+.dive-footer-grid p {
+  line-height: 1.6;
+}
+.dive-footer-grid p span {
+  display: inline-block;
+  color: var(--color-muted-dark);
+  margin-top: 16px;
+}
+.dive-footer-grid a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+.dive-colophon {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 48px;
+  color: var(--color-muted-dark);
+  font-size: 12px;
+}
+
+/* Fixed utility controls stay outside the decorative canvas's stacking context. */
+.ocean-controls {
+  position: fixed;
+  right: 24px;
+  bottom: 20px;
+  z-index: 40;
+  pointer-events: auto;
+}
+.ocean-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  border: 1px solid #ffffff40;
+  padding: 0 16px;
+  border-radius: var(--radius-pill);
+  background: #030a18cc;
+  backdrop-filter: blur(12px);
+  color: var(--color-white);
+  font: 400 12px/1 var(--font-body);
+  cursor: pointer;
+}
+.ocean-toggle:hover {
+  border-color: var(--color-brand-blue-500);
+}
+.dive-depth {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  pointer-events: none;
+  color: var(--color-muted-dark);
+}
+.depth-track {
+  width: 48px;
+  height: 2px;
+  background: #ffffff40;
+}
+.depth-track > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-brand-blue-500);
+  transform: scaleX(var(--journey-progress, 0));
+  transform-origin: left;
+}
+.depth-label {
+  margin-left: 8px;
+}
+
+/* STATIC FALLBACK — no GPU download, no depth motion; every section remains visible. */
+.ocean-static .ocean-canvas {
+  background:
+    radial-gradient(ellipse at 65% 10%, #88c1f244, transparent 55%),
+    var(--color-navy-950);
+}
+.ocean-static .surface-logo {
+  opacity: 1;
+}
+.ocean-static .dive-depth {
+  display: none;
+}
+.ocean-static [data-reveal],
+.ocean-static .dive-project-visual {
+  opacity: 1 !important;
+  transform: none !important;
+}
+@media (max-width: 767px) {
+  .dive-surface {
+    min-height: 640px;
+  }
+  .surface-coordinate {
+    top: 110px;
+  }
+  .surface-note {
+    display: none;
+  }
+  .surface-copy {
+    bottom: 64px;
+  }
+  .surface-baseline {
+    flex-direction: column;
+    align-items: start;
+    gap: 8px;
+    font-size: 12px;
+  }
+  .dive-down {
+    gap: 24px;
+  }
+  .dive-introduction {
+    min-height: 115svh;
+    padding-block: 100px;
+  }
+  .dive-intro-detail {
+    font-size: 18px;
+    max-width: 88%;
+  }
+  .ocean-margin-note {
+    display: none;
+  }
+  .dive-work-heading {
+    padding-block: 80px;
+  }
+  .dive-project {
+    min-height: auto;
+    padding-block: 64px 100px;
+  }
+  .dive-project-link {
+    width: 100%;
+  }
+  .dive-project-meta {
+    font-size: 12px;
+    gap: 12px;
+  }
+  .dive-project-caption {
+    flex-direction: column;
+    align-items: start;
+    gap: 12px;
+    padding-top: 24px;
+  }
+  .dive-project-caption p {
+    text-align: left;
+  }
+  .dive-playground {
+    padding-block: 48px 100px;
+  }
+  .ocean-page .dive-footer {
+    padding-top: 100px;
+  }
+  .contact-star {
+    font-size: 0.5em;
+  }
+  .dive-footer-grid {
+    flex-direction: column;
+    margin-top: 48px;
+  }
+  .dive-colophon {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .depth-label {
+    display: none;
+  }
+  .dive-depth {
+    left: 20px;
+  }
+  .ocean-controls {
+    right: 16px;
+    bottom: 16px;
+  }
+  .ocean-page .site-header--home .site-bar {
+    width: calc(100% - 32px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html:has(.ocean-page) {
+    scroll-behavior: auto;
+  }
+  .ocean-page [data-reveal],
+  .ocean-page .dive-project-visual {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .ocean-page .surface-logo {
+    transition: opacity 160ms;
+  }
+}
+
+/* Vector marks avoid emoji rendering and missing arrow glyphs in local fonts. */
+.ocean-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+.title-star {
+  width: 0.65em;
+  height: 0.65em;
+}
+.title-star svg,
+.contact-star svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.contact-star {
+  width: 0.8em;
+  height: 0.8em;
+}
+.ocean-page .site-header--home {
+  background: #030a1899;
+}
+.dive-surface {
+  background: linear-gradient(180deg, #030a1899, #030a1800 45%, #030a18b3);
+}
+@media (max-width: 767px) {
+  .contact-star {
+    width: 0.5em;
+    height: 0.5em;
+  }
+}
+
+@media (max-width: 767px) {
+  .surface-coordinate {
+    top: 176px;
+  }
+}
+
+/* The complete GLB is scoped to the hero; document content stays above it. */
+.hero-model-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--color-navy-950);
+}
+.hero-model-scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, #030a1844, transparent 45%, #030a18bb);
+}
+.dive-surface .surface-coordinate,
+.dive-surface .surface-note,
+.dive-surface .surface-copy,
+.dive-surface .surface-logo {
+  z-index: 1;
+}
+.ocean-live .surface-logo {
+  opacity: 1;
+}
+.hero-model-ready .surface-logo {
+  opacity: 0;
+}
+.ocean-static .hero-model-scene {
+  background: transparent;
+}

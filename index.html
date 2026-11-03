@@ -1,212 +1,407 @@
 <!doctype html>
 <html lang="de">
-  <!-- Homepage: hero, introduction, selected projects, personal story, and contact footer. -->
   <head>
-    <!-- Page title, search-engine description, and mobile viewport settings. -->
-    <meta charset="utf-8" /><meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Sara Fricker — Digital Design, UI/UX und Frontend Entwicklung aus St. Gallen."
+      content="Sara Fricker — Digital Design, UI/UX und Frontend Entwicklung aus St. Gallen. Tauche ein in meine Arbeit."
     />
     <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
     <title>Sara Fricker — Digital Design & Entwicklung</title>
-    <!-- Styles load in order: shared foundations, page styling, then navigation overrides. -->
     <link rel="stylesheet" href="src/tokens.css" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="styles/navigation.css" />
+    <link rel="stylesheet" href="styles/ocean.css" />
   </head>
-  <body>
-    <!-- Shared markup is rendered by the Vite site-layout plugin. -->
-    <!-- Shared navbar: edit src/site-layout.js, not this insertion marker. -->
+  <body class="ocean-page">
+    <!-- Fixed visual layer. All reading, scrolling and links live in normal HTML below. -->
+    <div id="ocean-root" class="ocean-canvas" aria-hidden="true"></div>
+    <div class="ocean-atmosphere" aria-hidden="true"></div>
     <!-- SITE_NAV -->
-    <!-- HERO: replace assets/hero.webp for the background; edit the name and tagline below. -->
-    <header class="hero" id="home">
-      <div class="hero-title"
-        ><p>Digital Design, UI/UX & Frontend Development</p
-        ><h1>Sara<br />Fricker</h1></div
-      >
-      <div class="hero-bottom"
-        ><span>© 2026</span
-        ><a href="mailto:sarafricker@gmail.com">sarafricker@gmail.com</a></div
-      >
-    </header>
-    <!-- MAIN CONTENT: this ID is the destination of the keyboard skip link. -->
     <main id="main">
-      <!-- INTRODUCTION: short statement with inline portrait and design images. -->
-      <section class="intro" aria-label="Über meine Arbeit"
-        ><div class="intro-lines"
-          ><p
-            ><small>Hi ich heisse</small> Sara, Webdesignerin
-            <span class="bracket"
-              >[ <img src="assets/portrait.webp" alt="Sara" /> ]</span
-            ></p
-          ><p>und Frontend Entwicklerin <small>aus St. Gallen</small></p
-          ><p
-            ><span class="bracket"
-              >[
-              <img src="assets/pink.webp" alt="Pinkfarbenes Designmotiv" />
-              ]</span
-            >
-            <small>ich gestalte</small> digitale Erlebnisse</p
-          ><p
-            ><small>an der Schnittstelle von</small> Technologie und Empathie</p
-          ></div
-        ></section
-      >
-      <!-- SELECTED WORK: keep this ID; all “All projects” links return here. -->
-      <section id="portfolio" class="portfolio" aria-label="Portfolio">
-        <!-- Direct links let visitors open a case study without scrolling through the full index. -->
-        <nav class="work-shortcuts" aria-label="Selected projects">
-          <a href="schatzkistevr.html">01 / SchatzkisteVR ↗</a>
-          <a href="typespace.html">02 / TypeSpace ↗</a>
-          <a href="lessonflow.html">03 / LessonFlow ↗</a>
-        </nav>
-        <div class="project portfolio-intro"
-          ><h2>Port</h2
-          ><p
-            >Eine Sammlung meiner Projekte – persönlich wie beruflich, die meine
-            visuellen Stil und gestalterischen Kompetenzen widerspiegeln.</p
-          ><span class="project-word" aria-hidden="true">folio</span></div
+      <!-- HERO: the complete uploaded GLB is rendered here, with its original transforms.
+           The SVG stays visible while loading and in the static fallback. -->
+      <section class="dive-surface" id="home" aria-labelledby="home-title">
+        <div
+          id="hero-model-root"
+          class="hero-model-scene"
+          aria-hidden="true"
+        ></div>
+        <div class="surface-coordinate" aria-hidden="true"
+          >47°25′ N &nbsp; 9°22′ E<br />St. Gallen, Schweiz</div
         >
-        <!-- PROJECT: SchatzkisteVR. The entire entry is a link; swap its image in assets/. -->
-        <a
-          class="project-entry-link"
-          href="schatzkistevr.html"
-          aria-label="Projekt SchatzkisteVR ansehen"
-          ><article class="project"
-            ><h2>Schatz</h2
-            ><div class="project-card"
-              ><div class="metadata"
-                ><span>VR im Web</span><span>Bachelorarbeit</span></div
+        <img
+          class="surface-logo"
+          src="assets/logo.svg"
+          alt=""
+          width="180"
+          height="180"
+        />
+        <div class="surface-copy">
+          <p class="dive-eyebrow">Independent designer & creative developer</p>
+          <h1 id="home-title"
+            >Sara Fricker<span class="title-star" aria-hidden="true"
+              ><svg
+                viewBox="0 0 100 100"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="5"
+                stroke-linecap="round"
+              >
+                <path
+                  d="M50 8v84M8 50h84M20 20l60 60M20 80l60-60"
+                /></svg></span
+          ></h1>
+          <div class="surface-baseline"
+            ><p>Digital Design · UI/UX · Frontend Development</p
+            ><a class="dive-down" href="#introduction"
+              >Unter der Oberfläche
+              <span aria-hidden="true"
+                ><svg
+                  class="ocean-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                >
+                  <path d="M12 3v18M5 14l7 7 7-7" /></svg></span></a
+          ></div>
+        </div>
+        <span class="surface-note" aria-hidden="true"
+          >A little curiosity goes a long way.</span
+        >
+      </section>
+
+      <!-- DIVE: camera crosses the water before this introduction enters view. -->
+      <section
+        class="dive-introduction dive-section"
+        id="introduction"
+        aria-labelledby="intro-title"
+      >
+        <div data-reveal>
+          <p class="dive-eyebrow"
+            ><span class="section-number">01 /</span> Ein bisschen tiefer</p
+          >
+          <h2 id="intro-title">Hi, ich heisse <span>Sara.</span></h2>
+          <p class="dive-statement"
+            >Webdesignerin und<br />Frontend Entwicklerin<br /><span
+              >aus St. Gallen.</span
+            ></p
+          >
+          <p class="dive-intro-detail"
+            >Ich gestalte digitale Erlebnisse an der Schnittstelle von
+            <em>Technologie</em> und <em>Empathie.</em></p
+          >
+          <a class="dive-text-link" href="about.html"
+            >Mehr über mich
+            <span aria-hidden="true"
+              ><svg
+                class="ocean-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                aria-hidden="true"
+              >
+                <path d="M5 19 19 5M5 5h14v14" /></svg></span
+          ></a>
+        </div>
+        <span class="ocean-margin-note" aria-hidden="true"
+          >Ideen mit Tiefgang.</span
+        >
+      </section>
+
+      <!-- WORK: real HTML links remain readable and keyboard-accessible over the scene. -->
+      <section class="dive-work" id="portfolio" aria-labelledby="work-title">
+        <div class="dive-work-heading dive-section" data-reveal>
+          <p class="dive-eyebrow"
+            ><span class="section-number">02 /</span> Selected work ·
+            2021—2026</p
+          >
+          <h2 id="work-title">Deep into<br /><span>my work.</span></h2>
+          <p>Persönliche Perspektiven.<br />Digitale Möglichkeiten.</p>
+        </div>
+        <article
+          class="dive-project dive-section"
+          aria-labelledby="schatz-title"
+        >
+          <a class="dive-project-link" href="schatzkistevr.html" data-reveal>
+            <div class="dive-project-meta"
+              ><span>01 — UI/UX · WebVR</span><span>2024—2025</span></div
+            >
+            <div class="dive-project-visual"
               ><img
                 src="assets/schatzkiste.webp"
-                alt="Bunte dreidimensionale Welt des Projekts SchatzkisteVR"
-              /><div class="metadata"
-                ><span>2024 – 2025</span
-                ><span>Webdesign &<br />Development</span></div
-              ></div
-            ><span class="project-word" aria-hidden="true">kisteVR</span
-            ><span class="sr-only">SchatzkisteVR</span></article
-          ></a
+                alt="Bunte dreidimensionale Erlebniswelt von SchatzkisteVR"
+                width="885"
+                height="876"
+                loading="lazy" /><span class="project-open" aria-hidden="true"
+                ><svg
+                  class="ocean-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                >
+                  <path d="M5 19 19 5M5 5h14v14" /></svg></span
+            ></div>
+            <div class="dive-project-caption"
+              ><h3 id="schatz-title">Schatz<span>kisteVR</span></h3
+              ><p>Erinnerungen erleben.<br />Verbindungen schaffen.</p></div
+            >
+            <span class="dive-project-cta"
+              >Projekt entdecken
+              <span aria-hidden="true"
+                ><svg
+                  class="ocean-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                >
+                  <path d="M5 19 19 5M5 5h14v14" /></svg></span
+            ></span>
+          </a>
+        </article>
+        <article
+          class="dive-project dive-project--right dive-section"
+          aria-labelledby="type-title"
         >
-        <!-- PROJECT: TypeSpace. The entire entry is a link; swap its image in assets/. -->
-        <a
-          class="project-entry-link"
-          href="typespace.html"
-          aria-label="Projekt TypeSpace ansehen"
-          ><article class="project"
-            ><h2>Type</h2
-            ><div class="project-card"
-              ><div class="metadata"
-                ><span>Print & Layout</span><span>Sammlung</span></div
+          <a class="dive-project-link" href="typespace.html" data-reveal>
+            <div class="dive-project-meta"
+              ><span>02 — Visual Design · Print</span
+              ><span>2021—2026</span></div
+            >
+            <div class="dive-project-visual"
               ><img
                 src="assets/type-space.webp"
                 alt="Printgestaltung mit geometrischen Formen in Pastellfarben"
-              /><div class="metadata"
-                ><span>2021 – 2026</span><span>Visual Design</span></div
-              ></div
-            ><span class="project-word" aria-hidden="true">Space</span></article
-          ></a
+                width="885"
+                height="876"
+                loading="lazy" /><span class="project-open" aria-hidden="true"
+                ><svg
+                  class="ocean-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                >
+                  <path d="M5 19 19 5M5 5h14v14" /></svg></span
+            ></div>
+            <div class="dive-project-caption"
+              ><h3 id="type-title">Type<span>Space</span></h3
+              ><p>Wenn Buchstaben<br />Raum einnehmen.</p></div
+            >
+            <span class="dive-project-cta"
+              >Projektvorschau entdecken
+              <span aria-hidden="true"
+                ><svg
+                  class="ocean-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                >
+                  <path d="M5 19 19 5M5 5h14v14" /></svg></span
+            ></span>
+          </a>
+        </article>
+        <article
+          class="dive-project dive-section"
+          aria-labelledby="lesson-title"
         >
-        <!-- PROJECT: LessonFlow. The entire entry is a link; swap its image in assets/. -->
-        <a
-          class="project-entry-link"
-          href="lessonflow.html"
-          aria-label="Projekt LessonFlow ansehen"
-          ><article class="project"
-            ><h2>Lesson</h2
-            ><div class="project-card"
-              ><div class="metadata"
-                ><span>Figma & Vue.js</span><span>Case Study</span></div
+          <a class="dive-project-link" href="lessonflow.html" data-reveal>
+            <div class="dive-project-meta"
+              ><span>03 — UI/UX · Development</span><span>2025</span></div
+            >
+            <div class="dive-project-visual"
               ><img
                 src="assets/lesson-flow.webp"
-                alt="Lesson Flow App auf einem Smartphone"
-              /><div class="metadata"
-                ><span>2025</span
-                ><span>UI/UX Design &<br />Development</span></div
-              ></div
-            ><span class="project-word" aria-hidden="true">Flow</span></article
-          ></a
+                alt="LessonFlow App für die Unterrichtsplanung auf einem Smartphone"
+                width="885"
+                height="876"
+                loading="lazy" /><span class="project-open" aria-hidden="true"
+                ><svg
+                  class="ocean-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                >
+                  <path d="M5 19 19 5M5 5h14v14" /></svg></span
+            ></div>
+            <div class="dive-project-caption"
+              ><h3 id="lesson-title">Lesson<span>Flow</span></h3
+              ><p>Weniger Planung.<br />Mehr Möglichkeiten.</p></div
+            >
+            <span class="dive-project-cta"
+              >Projekt entdecken
+              <span aria-hidden="true"
+                ><svg
+                  class="ocean-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                >
+                  <path d="M5 19 19 5M5 5h14v14" /></svg></span
+            ></span>
+          </a>
+        </article>
+        <article
+          class="dive-project dive-project--right dive-section"
+          aria-labelledby="unpolished-title"
         >
-        <!-- UNPOLISHED: preview only; there is no separate case-study page yet. -->
-        <article class="project"
-          ><h2>Unpo</h2
-          ><div class="project-card"
-            ><div class="metadata"
-              ><span>Multimedia</span><span>Sammlung</span></div
-            ><img
-              src="assets/unpolished.webp"
-              alt="Mondoberfläche vor dunklem Hintergrund"
-            /><div class="metadata"
-              ><span>2020 – heute</span
-              ><span>Design &<br />Development</span></div
-            ></div
-          ><span class="project-word" aria-hidden="true">lished</span></article
-        >
+          <a class="dive-project-link" href="playground.html" data-reveal>
+            <div class="dive-project-meta"
+              ><span>04 — Multimedia · Experiments</span
+              ><span>2020—heute</span></div
+            >
+            <div class="dive-project-visual"
+              ><img
+                src="assets/unpolished.webp"
+                alt="Mondoberfläche vor dunklem Hintergrund aus der Sammlung Unpolished"
+                width="885"
+                height="876"
+                loading="lazy" /><span class="project-open" aria-hidden="true"
+                ><svg
+                  class="ocean-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M5 19 19 5M5 5h14v14" /></svg></span
+            ></div>
+            <div class="dive-project-caption"
+              ><h3 id="unpolished-title">Un<span>polished</span></h3
+              ><p>Neugierig bleiben.<br />Neues ausprobieren.</p></div
+            >
+            <span class="dive-project-cta"
+              >Zum Playground · Sammlung im Aufbau
+              <svg
+                class="ocean-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                aria-hidden="true"
+              >
+                <path d="M5 19 19 5M5 5h14v14" /></svg
+            ></span>
+          </a>
+        </article>
+        <div class="dive-playground dive-section" data-reveal>
+          <p class="dive-eyebrow">Und da ist noch mehr.</p>
+          <a href="playground.html"
+            >Room for curiosity.
+            <span aria-hidden="true"
+              ><svg
+                class="ocean-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                aria-hidden="true"
+              >
+                <path d="M5 19 19 5M5 5h14v14" /></svg></span
+          ></a>
+          <p>Experimente, kleine Ideen und Unpolished.</p>
+        </div>
       </section>
-      <!-- ABOUT TEASER: introductory banner, followed by the longer personal story. -->
-      <section class="focus" id="about"
-        ><div
-          ><p>Digital Designerin, UI/UX Designerin & Frontend Entwicklerin</p
-          ><h2
-            >mit Fokus auf
-            <span class="bracket"
-              >[ <img src="assets/portrait.webp" alt="" /> ]</span
-            ><br />menschenzentrierte<br />Erlebnisse</h2
-          ></div
-        ></section
-      >
-      <!-- PERSONAL STORY: the full About page lives in about.html. -->
-      <section class="about-copy"
-        ><p
-          >Mich interessiert, nicht nur was Design funktioniert, sondern wie es
-          Menschen wirklich erreicht – besonders in sensiblen Kontexten. In
-          meiner Arbeit verbinde ich nutzerzentriertes Denken mit
-          technologischen Möglichkeiten wie Virtual Reality. Mein Fokus liegt
-          darauf, komplexe Technologien so zu gestalten, dass sie zugänglich,
-          verständlich und emotional wirksam werden. In meiner Bachelorarbeit
-          entwickelte ich eine VR-Erfahrung für Menschen mit Demenz. Durch
-          intensive Recherche, persönliche Einblicke und iterative Tests
-          entstanden Ansätze, die Erinnerungen aktivieren, Nähe fördern und neue
-          Formen der Begegnung eröffnen. Dabei begleitet mich stets der Wunsch,
-          Inhalte selbst zu entwickeln, strukturiert und visuell präzise – vom
-          Research über Storyboards bis zur Umsetzung. Gute UX ist für mich,
-          Lösungen nicht nur funktional, sondern auch bedeutungsvoll zu
-          gestalten.</p
-        ></section
-      >
-      <!-- EVERYDAY LIFE: the coffee illustration is separate from the editable heading. -->
-      <section class="everyday" id="alltag"
-        ><h2>Mein Alltag</h2
-        ><div class="coffee-title">Start in den Tag mit Kaffee<span></span></div
-        ><img
-          src="assets/coffee.webp"
-          alt="Illustration einer Kaffeemaschine mit handschriftlichen Notizen"
-      /></section>
     </main>
-    <!-- CONTACT FOOTER: brand lettering, location, email address, and external links. -->
-    <footer id="kontakt"
-      ><div class="footer-title"
-        >Sara <span>[ <img src="assets/pink.webp" alt="" /> ]</span> Lee ✳</div
-      ><div class="footer-grid"
-        ><div
-          ><small>© 2026 Sara Fricker · All rights reserved</small
-          ><p class="services"
-            >Digital Design, UI/UX &<br />Frontend Development</p
-          ></div
-        ><div
-          ><h2>Location</h2><p>St. Gallen, Schweiz</p><h2>E-Mail</h2
-          ><a href="mailto:sarafricker@gmail.com">sarafricker@gmail.com</a></div
-        ><div
-          ><h2>Links</h2><a href="https://github.com/majakka07">GitHub ↗</a
-          ><a href="mailto:sarafricker@gmail.com">Kontakt ↗</a></div
-        ></div
-      ></footer
-    >
 
-    <!-- Optional menu enhancements: Escape, outside-click, and focus handling. -->
-    <script type="module" src="src/navigation.js"></script> </body
-></html>
+    <!-- SEABED: the final camera stop looks down onto the ground behind the footer. -->
+    <footer id="kontakt" class="dive-footer" aria-labelledby="contact-title">
+      <div data-reveal>
+        <p class="dive-eyebrow"
+          ><span class="section-number">03 /</span> Schön, bist du hier
+          unten.</p
+        >
+        <h2 id="contact-title"
+          >Let’s make<br /><span>waves.</span
+          ><span class="contact-star" aria-hidden="true"
+            ><svg
+              viewBox="0 0 100 100"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="5"
+              stroke-linecap="round"
+            >
+              <path d="M50 8v84M8 50h84M20 20l60 60M20 80l60-60" /></svg></span
+        ></h2>
+        <a class="dive-email" href="mailto:sarafricker@gmail.com"
+          >sarafricker@gmail.com
+          <span aria-hidden="true"
+            ><svg
+              class="ocean-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              aria-hidden="true"
+            >
+              <path d="M5 19 19 5M5 5h14v14" /></svg></span
+        ></a>
+        <div class="dive-footer-grid"
+          ><p
+            >Digital Design, UI/UX &<br />Frontend Development<br /><span
+              >St. Gallen, Schweiz</span
+            ></p
+          ><div
+            ><a href="about.html"
+              >About me
+              <svg
+                class="ocean-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                aria-hidden="true"
+              >
+                <path d="M5 19 19 5M5 5h14v14" /></svg></a
+            ><a href="https://github.com/majakka07"
+              >GitHub
+              <svg
+                class="ocean-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                aria-hidden="true"
+              >
+                <path d="M5 19 19 5M5 5h14v14" /></svg></a
+            ><a href="#home"
+              >Zurück an die Oberfläche
+              <svg
+                class="ocean-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                aria-hidden="true"
+              >
+                <path d="M12 21V3M5 10l7-7 7 7" /></svg></a></div
+        ></div>
+        <div class="dive-colophon"
+          ><span>© 2026 Sara Fricker</span
+          ><span>Made with curiosity.</span></div
+        >
+      </div>
+    </footer>
+    <div class="dive-depth" aria-hidden="true"
+      ><span class="depth-track"><span></span></span><span data-depth>00 m</span
+      ><span class="depth-label">Below the surface</span></div
+    >
+    <script type="module" src="src/navigation.js"></script>
+    <script type="module" src="src/ocean/main.tsx"></script>
+  </body>
+</html>
